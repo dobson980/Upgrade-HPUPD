@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS 
     HP Universal Print Driver Upgrade
 .DESCRIPTION 
@@ -75,9 +75,10 @@ Function Upgrade-HPUPD
     Function Check-ForHPUPD {
              
         #Checks for Sharp UPD In Driver Store.
-        $UPD = "$ENV:windir\System32\DriverStore\FileRepository\hpcu210u.inf_amd64_neutral_1f5cb1d03fe18675\hpcu210u.inf"
+        $WIN7UPD = "$ENV:windir\System32\DriverStore\FileRepository\hpcu210u.inf_amd64_neutral_1f5cb1d03fe18675\hpcu210u.inf"
+        $UPD = "$ENV:windir\System32\DriverStore\FileRepository\hpcu210u.inf_amd64_1f5cb1d03fe18675\hpcu210u.inf"
              
-        If (Test-Path $UPD) 
+        If ((Test-Path $UPD) -or (Test-Path $WIN7UPD)) 
         {
             Write-Log "$DRIVERSTORE is already detected in the Driver Store."
             return $True
